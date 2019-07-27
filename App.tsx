@@ -1,19 +1,19 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import ApolloClient from "apollo-boost"
+import React from "react"
+import { ApolloProvider } from "react-apollo"
+import App from "./src/App"
+import { StyleProvider } from "./src/ui/style"
 
-export default function App() {
+const client = new ApolloClient({
+  uri: "https://wd-gql.herokuapp.com/",
+})
+
+export default function Root() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
+    <ApolloProvider client={client}>
+      <StyleProvider>
+        <App />
+      </StyleProvider>
+    </ApolloProvider>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
