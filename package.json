@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "codegen": "graphql-codegen --config codegen.yml --watch"
+    "codegen": "graphql-codegen --config codegen.yml --watch",
+    "dev": "npm-run-all --parallel web codegen"
   },
   "dependencies": {
     "@apollo/react-hooks": "^0.1.0-beta.11",
@@ -21,12 +22,13 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.4.0",
+    "@graphql-codegen/typescript": "^1.4.0",
+    "@graphql-codegen/typescript-operations": "^1.4.0",
     "@types/react": "^16.8.19",
     "@types/react-native": "^0.57.60",
     "babel-preset-expo": "^5.1.1",
-    "typescript": "^3.4.5",
-    "@graphql-codegen/typescript": "^1.4.0",
-    "@graphql-codegen/typescript-operations": "^1.4.0"
+    "npm-run-all": "^4.1.5",
+    "typescript": "^3.4.5"
   },
   "private": true
 }
