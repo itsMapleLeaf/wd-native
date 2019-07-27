@@ -170,6 +170,20 @@ export type UserList = {
   limit: Scalars["Int"]
   offset: Scalars["Int"]
 }
+export type TrackListQueryVariables = {
+  offset?: Maybe<Scalars["Int"]>
+}
+
+export type TrackListQuery = { __typename?: "Query" } & {
+  tracks: { __typename?: "TrackList" } & Pick<TrackList, "offset"> & {
+      rows: Array<
+        { __typename?: "Track" } & Pick<Track, "id" | "title" | "createdAt"> & {
+            user: { __typename?: "User" } & Pick<User, "displayName">
+          }
+      >
+    }
+}
+
 export type UserListQueryVariables = {}
 
 export type UserListQuery = { __typename?: "Query" } & {

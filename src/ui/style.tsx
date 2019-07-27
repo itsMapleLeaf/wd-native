@@ -11,9 +11,12 @@ const defaultStyles = StyleSheet.create({
     backgroundColor: "rgb(9, 31, 53)",
   },
   text: {
-    fontSize: 16,
+    fontSize: 15,
     fontFamily: "Roboto",
     color: `rgb(225, 225, 240)`,
+  },
+  flex1: {
+    flex: 1,
   },
 })
 
