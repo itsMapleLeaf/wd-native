@@ -1,0 +1,8 @@
+overwrite: true
+schema: "https://wd-gql.herokuapp.com"
+documents: "src/**/*.tsx"
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"

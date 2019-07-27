@@ -2,10 +2,13 @@ import { useQuery } from "@apollo/react-hooks"
 import { gql } from "apollo-boost"
 import React from "react"
 import { TouchableOpacity, View } from "react-native"
+import { UserListQuery, UserListQueryVariables } from "../generated/graphql"
 import AppText from "../ui/AppText"
 
 export default function UserList() {
-  const { data } = useQuery<UserListQuery>(userListQuery)
+  const { data } = useQuery<UserListQuery, UserListQueryVariables>(
+    userListQuery,
+  )
   return (
     <View>
       {data &&
@@ -21,7 +24,7 @@ export default function UserList() {
 }
 
 const userListQuery = gql`
-  {
+  query userList {
     users(offset: 104) {
       rows {
         id
@@ -31,13 +34,3 @@ const userListQuery = gql`
     }
   }
 `
-
-type UserListQuery = {
-  users: {
-    rows: {
-      id: number
-      username: string
-      displayName: string
-    }[]
-  }
-}
