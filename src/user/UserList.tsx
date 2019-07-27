@@ -8,7 +8,8 @@ export default function UserList() {
   const { data } = useQuery<UserListQuery>(userListQuery)
   return (
     <View>
-      {data.users &&
+      {data &&
+        data.users &&
         data.users.rows.map((user) => (
           <TouchableOpacity key={user.id}>
             <AppText>{user.username}</AppText>
