@@ -19,6 +19,8 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "WaveDistrict native app backed by a GraphQL mirror https://github.com/kingdaro/wavedistrict-graphql-mirror",
+    "githubUrl": "https://github.com/kingdaro/wd-native"
   }
 }
