@@ -7,7 +7,6 @@ import { StyleSheet } from "react-native"
 // especially helper styles
 const defaultStyles = StyleSheet.create({
   background: {
-    flex: 1,
     backgroundColor: "rgb(9, 31, 53)",
   },
   text: {

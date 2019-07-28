@@ -10,7 +10,10 @@ function StatusBarSpacer() {
 export default function App() {
   const styles = useStyles()
   return (
-    <KeyboardAvoidingView style={[styles.background, styles.flex1]}>
+    <KeyboardAvoidingView
+      style={[styles.background, styles.flex1]}
+      behavior="padding"
+    >
       <StatusBarSpacer />
       <TrackList />
     </KeyboardAvoidingView>
