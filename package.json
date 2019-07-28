@@ -7,7 +7,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "codegen": "graphql-codegen --config codegen.yml --watch",
-    "dev": "npm-run-all --parallel start codegen",
+    "dev": "npm-run-all --parallel --race start codegen",
     "lint": "eslint src/**/*"
   },
   "dependencies": {
