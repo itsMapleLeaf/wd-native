@@ -1,4 +1,5 @@
 import { gql } from "apollo-boost"
+import idx from "idx"
 import produce from "immer"
 import React from "react"
 import { useQuery } from "react-apollo"
@@ -48,7 +49,7 @@ export default function TrackList() {
     })
   }
 
-  const tracks = (data && data.tracks && data.tracks.rows) || []
+  const tracks = idx(data, (_) => _.tracks.rows) || []
 
   return (
     <FlatList
