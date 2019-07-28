@@ -1,11 +1,7 @@
 import React from "react"
-import { KeyboardAvoidingView, StatusBar, View } from "react-native"
+import { KeyboardAvoidingView, View } from "react-native"
 import TrackList from "./track/TrackList"
 import { useStyles } from "./ui/style"
-
-function StatusBarSpacer() {
-  return <View style={{ height: StatusBar.currentHeight }} />
-}
 
 export default function App() {
   const styles = useStyles()
@@ -14,7 +10,7 @@ export default function App() {
       style={[styles.background, styles.flex1]}
       behavior="padding"
     >
-      <StatusBarSpacer />
+      <View style={styles.statusBarHeight} />
       <TrackList />
     </KeyboardAvoidingView>
   )

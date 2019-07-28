@@ -1,5 +1,5 @@
 import React, { createContext, PropsWithChildren, useContext } from "react"
-import { StyleSheet } from "react-native"
+import { StatusBar, StyleSheet } from "react-native"
 
 // right now we only have one style sheet,
 // but this sets us up to add in theming later if we want it
@@ -16,6 +16,9 @@ const defaultStyles = StyleSheet.create({
   },
   flex1: {
     flex: 1,
+  },
+  statusBarHeight: {
+    height: StatusBar.currentHeight,
   },
 })
 
