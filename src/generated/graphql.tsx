@@ -172,10 +172,11 @@ export type UserList = {
 }
 export type TrackListQueryVariables = {
   offset?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
 }
 
 export type TrackListQuery = { __typename?: "Query" } & {
-  tracks: { __typename?: "TrackList" } & Pick<TrackList, "offset"> & {
+  tracks: { __typename?: "TrackList" } & Pick<TrackList, "offset" | "limit"> & {
       rows: Array<
         { __typename?: "Track" } & Pick<Track, "id" | "title" | "createdAt"> & {
             user: { __typename?: "User" } & Pick<User, "displayName">

@@ -9,15 +9,19 @@ export default function TrackList() {
   const { data, loading, refetch, fetchMore } = useQuery<
     TrackListQuery,
     TrackListQueryVariables
-  >(trackListQuery)
+  >(trackListQuery, {
+    variables: { limit: 20 },
+    notifyOnNetworkStatusChange: true,
+  })
 
   const handleEndReached = () => {
-    if (!data) return
+    if (loading || !data) return
 
     fetchMore({
       query: trackListQuery,
       variables: {
-        offset: data.tracks.offset,
+        limit: data.tracks.limit,
+        offset: data.tracks.offset + data.tracks.limit,
       },
       updateQuery(prevResult, { fetchMoreResult }) {
         return {
@@ -71,8 +75,7 @@ export default function TrackList() {
       refreshing={loading}
       onRefresh={() => refetch()}
       onEndReached={handleEndReached}
-      onEndReachedThreshold={0.5}
-      // ListFooterComponent={loading ? <ActivityIndicator /> : null}
+      onEndReachedThreshold={1}
     />
   )
 
@@ -80,8 +83,8 @@ export default function TrackList() {
 }
 
 const trackListQuery = gql`
-  query trackList($offset: Int) {
-    tracks(limit: 10, offset: $offset) {
+  query trackList($offset: Int, $limit: Int) {
+    tracks(limit: $limit, offset: $offset) {
       rows {
         id
         title
@@ -91,6 +94,7 @@ const trackListQuery = gql`
         createdAt
       }
       offset
+      limit
     }
   }
 `
