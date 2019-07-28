@@ -1,13 +1,13 @@
 import React from "react"
 import { KeyboardAvoidingView, View } from "react-native"
 import TrackList from "./track/TrackList"
-import { useStyles } from "./ui/style"
+import { useTheme } from "./ui/theme"
 
 export default function App() {
-  const styles = useStyles()
+  const { styles } = useTheme()
   return (
     <KeyboardAvoidingView
-      style={[styles.background, styles.flex1]}
+      style={[styles.backgroundFill, styles.flex1]}
       behavior="padding"
     >
       <View style={styles.statusBarHeight} />
