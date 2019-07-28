@@ -2,9 +2,10 @@ import { gql } from "apollo-boost"
 import produce from "immer"
 import React from "react"
 import { useQuery } from "react-apollo"
-import { FlatList, TouchableOpacity, View } from "react-native"
+import { FlatList } from "react-native"
+import getStringId from "../common/getStringId"
 import { TrackListQuery, TrackListQueryVariables } from "../generated/graphql"
-import AppText from "../ui/AppText"
+import TrackListTile from "./TrackListTile"
 
 type UpdateQueryOptions<Q, V = {}> = {
   fetchMoreResult?: Q
@@ -50,46 +51,23 @@ export default function TrackList() {
   const tracks = (data && data.tracks && data.tracks.rows) || []
 
   return (
-    <View style={{ flex: 1 }}>
-      <FlatList
-        data={tracks}
-        keyExtractor={(track) => String(track.id)}
-        contentContainerStyle={{
-          padding: 5,
-        }}
-        renderItem={({ item: track }) => (
-          <TouchableOpacity
-            style={{
-              backgroundColor: "rgb(13, 44, 76)",
-              padding: 10,
-              marginBottom: 5,
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            <View
-              style={{
-                width: 60,
-                height: 60,
-                marginRight: 10,
-                backgroundColor: "rgba(0, 0, 0, 0.2)",
-              }}
-            />
-
-            <View style={{ flex: 1 }}>
-              <AppText numberOfLines={1} style={{ fontSize: 14, opacity: 0.7 }}>
-                {track.user.displayName}
-              </AppText>
-              <AppText numberOfLines={2}>{track.title}</AppText>
-            </View>
-          </TouchableOpacity>
-        )}
-        refreshing={loading}
-        onRefresh={() => refetch()}
-        onEndReached={handleEndReached}
-        onEndReachedThreshold={1}
-      />
-    </View>
+    <FlatList
+      data={tracks}
+      keyExtractor={getStringId}
+      contentContainerStyle={{
+        padding: 5,
+      }}
+      renderItem={({ item: track }) => (
+        <TrackListTile
+          title={track.title}
+          userDisplayName={track.user.displayName}
+        />
+      )}
+      refreshing={loading}
+      onRefresh={() => refetch()}
+      onEndReached={handleEndReached}
+      onEndReachedThreshold={1}
+    />
   )
 }
 
