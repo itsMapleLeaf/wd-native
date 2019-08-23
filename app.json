@@ -17,6 +17,9 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "net.kingdaro.wdnative"
+    },
     "ios": {
       "supportsTablet": true
     },
